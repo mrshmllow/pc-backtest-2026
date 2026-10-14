@@ -1,0 +1,4 @@
+- arguments: [-XQuasiQuotes]
+- group: {name: future, enabled: true}
+- group: {name: use-lens, enabled: true}
+- group: {name: use-th-quotes, enabled: true}
