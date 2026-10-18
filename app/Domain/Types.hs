@@ -1,10 +1,8 @@
 module Domain.Types (PolymarketData, PolymarketTeam, AppError (..)) where
 
-import Control.Exception.Safe (SomeException)
 import Data.Aeson (FromJSON)
-import Data.Text (Text)
-import GHC.Generics (Generic)
 import Network.HTTP.Simple (HttpException, JSONException)
+import Relude
 
 data PolymarketTeam = PolymarketTeam
   { id :: Int,

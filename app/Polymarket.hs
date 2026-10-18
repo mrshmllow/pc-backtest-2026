@@ -1,13 +1,13 @@
-module Polymarket (PolymarketData, gammaBaseUrl, eventBySlugUrl, eventBySlug, test) where
+module Polymarket (PolymarketData, gammaBaseUrl, eventBySlugUrl, eventBySlug) where
 
-import Bluefin.Eff (Eff, runEff, (:>))
-import Bluefin.Exception (Exception, throw, try)
+import Bluefin.Eff (Eff, (:>))
+import Bluefin.Exception (Exception, throw)
 import Bluefin.IO (IOE, effIO)
-import Control.Exception.Safe (fromException, tryAny)
+import Control.Exception.Safe (tryAny)
 import Control.Lens
-import Data.Text (Text)
-import Domain.Types (AppError (..), PolymarketData, PolymarketTeam)
-import Network.HTTP.Simple (JSONException, Response, getResponseBody, httpJSONEither, parseRequest)
+import Domain.Types (AppError (..), PolymarketData)
+import Network.HTTP.Simple (getResponseBody, httpJSONEither, parseRequest)
+import Relude hiding (Exception)
 import Text.URI (URI)
 import Text.URI qualified as URI
 import Text.URI.Lens
@@ -35,9 +35,3 @@ eventBySlug io ex slug = do
   either (throw ex . JsonException) pure (getResponseBody json)
   where
     classifyReq e = maybe (Unexpected e) Http (fromException e)
-
-test :: Text -> IO (Either AppError (PolymarketData))
-test str = runEff $ \io -> do
-  req <- try $ \ex -> eventBySlug io ex str
-
-  pure $ req

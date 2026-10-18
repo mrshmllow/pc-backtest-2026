@@ -5,11 +5,10 @@ module Vlr
   )
 where
 
-import Control.Applicative (empty)
-import Data.Text (Text)
 import Data.Text qualified as T
 import Data.Time (UTCTime)
 import Data.Time.Format (defaultTimeLocale, parseTimeM)
+import Relude
 import Text.HTML.Scalpel (Scraper, Selector, attr, hasClass, scrapeURL, texts, (//), (@:))
 
 newtype VlrMatchId = VlrMatchId Int deriving (Show)
@@ -30,7 +29,7 @@ parseVlrTime = parseTimeM True defaultTimeLocale "%Y-%m-%d %H:%M:%S"
 vlrMatch :: Text -> Text -> Text -> Maybe VlrMatch
 vlrMatch tA tB d =
   (\moment -> MatchData {teamA = T.strip tA, teamB = T.strip tB, date = moment})
-    <$> parseVlrTime (T.unpack d)
+    <$> parseVlrTime (toString d)
 
 scrapeMatchData :: VlrMatchId -> IO (Maybe VlrMatch)
 scrapeMatchData matchId = scrapeURL (vlrMatchUrl matchId) match

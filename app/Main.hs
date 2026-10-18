@@ -4,6 +4,7 @@ import Bluefin.Eff (runEff)
 import Bluefin.Exception (try)
 import Bluefin.IO (effIO)
 import Polymarket (eventBySlug)
+import Relude
 import System.Log.FastLogger (LogType' (LogStdout), TimedFastLogger, ToLogStr (..), defaultBufSize, newTimedFastLogger, simpleTimeFormat)
 import System.Log.FastLogger.Date (newTimeCache)
 
@@ -21,4 +22,4 @@ main = runEff $ \io -> do
   req <- try $ \ex -> eventBySlug io ex "val-vit-loud-2026-10-16"
 
   effIO io $ logMsg logger (show req :: String)
-  effIO io $ cleanUp
+  effIO io cleanUp
