@@ -5,18 +5,19 @@ module Vlr
   )
 where
 
-import Data.Text qualified as T
-import Data.Time (UTCTime)
-import Data.Time.Format (defaultTimeLocale, parseTimeM)
-import Relude
-import Text.HTML.Scalpel (Scraper, Selector, attr, hasClass, scrapeURL, texts, (//), (@:))
+import qualified Data.Text         as T
+import           Data.Time         (UTCTime)
+import           Data.Time.Format  (defaultTimeLocale, parseTimeM)
+import           Relude
+import           Text.HTML.Scalpel (Scraper, Selector, attr, hasClass,
+                                    scrapeURL, texts, (//), (@:))
 
 newtype VlrMatchId = VlrMatchId Int deriving (Show)
 
 data VlrMatch = MatchData
   { teamA :: Text,
     teamB :: Text,
-    date :: UTCTime
+    date  :: UTCTime
   }
   deriving (Show)
 

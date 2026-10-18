@@ -11,6 +11,7 @@ pkgs.mkShell {
     pkgs.npins
     pkgs.zlib
     pkgs.pandoc
+    pkgs.stylish-haskell
 
     (pkgs.runCommand "hlint" { nativeBuildInputs = [ pkgs.makeWrapper ]; } ''
       mkdir -p $out/bin

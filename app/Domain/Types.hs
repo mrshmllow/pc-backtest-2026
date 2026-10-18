@@ -1,12 +1,12 @@
 module Domain.Types (PolymarketData, PolymarketTeam, AppError (..)) where
 
-import Data.Aeson (FromJSON)
-import Network.HTTP.Simple (HttpException, JSONException)
-import Relude
+import           Data.Aeson          (FromJSON)
+import           Network.HTTP.Simple (HttpException, JSONException)
+import           Relude
 
 data PolymarketTeam = PolymarketTeam
-  { id :: Int,
-    name :: Text,
+  { id           :: Int,
+    name         :: Text,
     abbreviation :: Text
   }
   deriving (Show, Generic)
@@ -14,7 +14,7 @@ data PolymarketTeam = PolymarketTeam
 instance FromJSON PolymarketTeam
 
 data PolymarketData = PolymarketData
-  { id :: Text,
+  { id    :: Text,
     teams :: [PolymarketTeam]
   }
   deriving (Show, Generic)
