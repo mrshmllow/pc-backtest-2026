@@ -1,12 +1,13 @@
-module Domain.Types (PolymarketData, PolymarketTeam, AppError (..)) where
+module Domain.Types (PolymarketData, PolymarketTeam, AppError (..), VlrMatch (..), VlrMatchId (..), VlrEntry (..), VlrEventId (..), VlrEvent (..)) where
 
-import           Data.Aeson          (FromJSON)
-import           Network.HTTP.Simple (HttpException, JSONException)
-import           Relude
+import Data.Aeson (FromJSON)
+import Data.Time (UTCTime)
+import Network.HTTP.Simple (HttpException, JSONException)
+import Relude
 
 data PolymarketTeam = PolymarketTeam
-  { id           :: Int,
-    name         :: Text,
+  { id :: Int,
+    name :: Text,
     abbreviation :: Text
   }
   deriving (Show, Generic)
@@ -14,7 +15,7 @@ data PolymarketTeam = PolymarketTeam
 instance FromJSON PolymarketTeam
 
 data PolymarketData = PolymarketData
-  { id    :: Text,
+  { id :: Text,
     teams :: [PolymarketTeam]
   }
   deriving (Show, Generic)
@@ -22,3 +23,25 @@ data PolymarketData = PolymarketData
 instance FromJSON PolymarketData
 
 data AppError = InvalidSlug | JsonException JSONException | Http HttpException | Unexpected SomeException deriving (Show)
+
+data VlrMatch
+  = MatchData
+  { teamA :: Text,
+    teamB :: Text,
+    date :: UTCTime,
+    matchId :: VlrMatchId
+  }
+  deriving (Show)
+
+data VlrEvent
+  = EventData
+  { name :: Text,
+    matches :: [VlrMatchId]
+  }
+  deriving (Show)
+
+newtype VlrMatchId = VlrMatchId Int deriving (Show)
+
+newtype VlrEventId = VlrEventId Int deriving (Show)
+
+data VlrEntry = EntryEventId VlrEventId | EntryMatchId VlrMatchId deriving (Show)

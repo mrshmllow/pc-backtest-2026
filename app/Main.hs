@@ -1,15 +1,19 @@
 module Main (main) where
 
-import           Bluefin.Eff                (runEff)
-import           Bluefin.Exception          (try)
-import           Bluefin.IO                 (effIO)
-import           Polymarket                 (eventBySlug)
-import           Relude
-import           System.Log.FastLogger      (LogType' (LogStdout),
-                                             TimedFastLogger, ToLogStr (..),
-                                             defaultBufSize, newTimedFastLogger,
-                                             simpleTimeFormat)
-import           System.Log.FastLogger.Date (newTimeCache)
+import Bluefin.Eff (runEff)
+import Bluefin.Exception (try)
+import Bluefin.IO (effIO)
+import Polymarket (eventBySlug)
+import Relude
+import System.Log.FastLogger
+  ( LogType' (LogStdout),
+    TimedFastLogger,
+    ToLogStr (..),
+    defaultBufSize,
+    newTimedFastLogger,
+    simpleTimeFormat,
+  )
+import System.Log.FastLogger.Date (newTimeCache)
 
 logMsg :: (ToLogStr msg) => TimedFastLogger -> msg -> IO ()
 logMsg logger msg = logger $ \formattedTime ->

@@ -1,18 +1,21 @@
 module Polymarket (PolymarketData, gammaBaseUrl, eventBySlugUrl, eventBySlug) where
 
-import           Bluefin.Eff            (Eff, (:>))
-import           Bluefin.Exception      (Exception, throw)
-import           Bluefin.IO             (IOE, effIO)
-import           Control.Exception.Safe (tryAny)
-import           Control.Lens
-import           Domain.Types           (AppError (..), PolymarketData)
-import           Network.HTTP.Simple    (getResponseBody, httpJSONEither,
-                                         parseRequest)
-import           Relude                 hiding (Exception)
-import qualified Text.URI               as URI
-import           Text.URI               (URI)
-import           Text.URI.Lens
-import qualified Text.URI.QQ            as QQ
+import Bluefin.Eff (Eff, (:>))
+import Bluefin.Exception (Exception, throw)
+import Bluefin.IO (IOE, effIO)
+import Control.Exception.Safe (tryAny)
+import Control.Lens
+import Domain.Types (AppError (..), PolymarketData)
+import Network.HTTP.Simple
+  ( getResponseBody,
+    httpJSONEither,
+    parseRequest,
+  )
+import Relude hiding (Exception)
+import Text.URI (URI)
+import Text.URI qualified as URI
+import Text.URI.Lens
+import Text.URI.QQ qualified as QQ
 
 gammaBaseUrl :: URI
 gammaBaseUrl = [QQ.uri|https://gamma-api.polymarket.com/events/slug|]

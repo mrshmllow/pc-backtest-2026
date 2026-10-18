@@ -23,7 +23,6 @@ executable pc-backtest-ingest
             Vlr
             Polymarket
             Domain.Types
-            Capabilities.Polymarket
     -- other-extensions:
     build-depends:
             base >= 4.14 && < 4.21,
