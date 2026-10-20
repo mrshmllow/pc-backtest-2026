@@ -1,7 +1,7 @@
 module Vlr
   ( scrapeMatch,
     mkScrapeUrl,
-    test,
+    scrapeEvent,
   )
 where
 
@@ -70,8 +70,8 @@ scrapeMatch matchId = do
     titleTeams :: Scraper Text [Text]
     titleTeams = texts $ "div" @: [hasClass "wf-title-med"]
 
-test :: [Text] -> Either SomeException [Int]
-test ts = do
+matchUrlToId :: [Text] -> Either SomeException [Int]
+matchUrlToId ts = do
   uris <- mapM URI.mkURI ts
   let pathPieces = uris ^.. traversed . uriPath . _head . unRText :: [Text]
 
@@ -87,12 +87,14 @@ scrapeEvent eventId = do
   where
     match :: Scraper Text VlrEvent
     match = do
-      matches <- matchAs
+      matchUrls <- matchAs
       name <- titleH1
+      -- todo: this does not reveal the error to the caller...
+      matchIds <- case matchUrlToId matchUrls of
+        Left _ -> empty
+        Right val -> pure val
 
-      undefined
-
-    -- maybe empty pure (EventData {matches, name})
+      pure $ EventData {name = T.strip name, matches = matchIds}
 
     titleH1 :: Scraper Text Text
     titleH1 = text $ "h1" @: [hasClass "event-header-main-title"]

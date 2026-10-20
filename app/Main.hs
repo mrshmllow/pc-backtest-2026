@@ -3,6 +3,7 @@ module Main (main) where
 import Bluefin.Eff (runEff)
 import Bluefin.Exception (try)
 import Bluefin.IO (effIO)
+import Domain.Types
 import Polymarket (eventBySlug)
 import Relude
 import System.Log.FastLogger
@@ -24,7 +25,9 @@ main = runEff $ \io -> do
   timeCache <- effIO io $ newTimeCache simpleTimeFormat
   (logger, cleanUp) <- effIO io $ newTimedFastLogger timeCache (LogStdout defaultBufSize)
 
-  effIO io $ logMsg logger ("hello world" :: String)
+  let eventId = VlrEventId 2766
+
+  effIO io $ logMsg logger ("querying" <> show eventId :: String)
 
   req <- try $ \ex -> eventBySlug io ex "val-vit-loud-2026-10-16"
 

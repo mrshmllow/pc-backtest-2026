@@ -36,7 +36,7 @@ data VlrMatch
 data VlrEvent
   = EventData
   { name :: Text,
-    matches :: [VlrMatchId]
+    matches :: [Int]
   }
   deriving (Show)
 
