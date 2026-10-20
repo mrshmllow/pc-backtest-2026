@@ -22,7 +22,7 @@ data PolymarketData = PolymarketData
 
 instance FromJSON PolymarketData
 
-data AppError = InvalidSlug | JsonException JSONException | Http HttpException | Unexpected SomeException deriving (Show)
+data AppError = InvalidSlug | InvalidVlrUrl | JsonException JSONException | Http HttpException | Unexpected SomeException deriving (Show)
 
 data VlrMatch
   = MatchData

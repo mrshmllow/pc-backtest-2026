@@ -5,13 +5,17 @@ module Vlr
   )
 where
 
+import Bluefin.Eff (Eff, (:>))
+import Bluefin.Exception (Exception, throw)
+import Bluefin.IO (IOE, effIO)
+import Control.Exception.Safe (tryAny)
 import Control.Lens
 import Data.Text qualified as T
 import Data.Time (UTCTime)
 import Data.Time.Format (defaultTimeLocale, parseTimeM)
 import Domain.Types
 import GHC.IO.Exception (userError)
-import Relude
+import Relude hiding (Exception)
 import Text.HTML.Scalpel
   ( Scraper,
     Selector,
@@ -79,22 +83,31 @@ matchUrlToId ts = do
   where
     parseInt t = maybe (Left (toException (userError ("not an int: " <> show t)))) Right (readMaybe $ toString t)
 
-scrapeEvent :: VlrEventId -> IO (Maybe VlrEvent)
-scrapeEvent eventId = do
-  case mkScrapeUrl (EntryEventId eventId) of
-    Nothing -> pure Nothing
-    Just uri -> scrapeURL (URI.renderStr uri) match
+scrapeEvent :: (io :> es, ex :> es) => IOE io -> Exception AppError ex -> VlrEventId -> Eff es (Maybe VlrEvent)
+scrapeEvent io ex eventId = do
+  uri <- case mkScrapeUrl (EntryEventId eventId) of
+    Just uri -> pure uri
+    Nothing -> throw ex InvalidVlrUrl
+
+  scrapedEx <- effIO io $ tryAny $ scrapeURL (URI.renderStr uri) match
+  scraped <- either (throw ex . Unexpected) pure scrapedEx
+
+  (name, matchUrls) <- case scraped of
+    Just a -> pure a
+    Nothing -> throw ex InvalidVlrUrl
+
+  matches <- case matchUrlToId matchUrls of
+    Left exception -> throw ex (Unexpected exception)
+    Right val -> pure val
+
+  pure $ Just EventData {name = T.strip name, matches}
   where
-    match :: Scraper Text VlrEvent
+    match :: Scraper Text (Text, [Text])
     match = do
       matchUrls <- matchAs
       name <- titleH1
-      -- todo: this does not reveal the error to the caller...
-      matchIds <- case matchUrlToId matchUrls of
-        Left _ -> empty
-        Right val -> pure val
 
-      pure $ EventData {name = T.strip name, matches = matchIds}
+      pure $ (name, matchUrls)
 
     titleH1 :: Scraper Text Text
     titleH1 = text $ "h1" @: [hasClass "event-header-main-title"]
