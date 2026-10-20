@@ -53,11 +53,14 @@ vlrMatch matchId tA tB d =
   (\moment -> MatchData {teamA = T.strip tA, teamB = T.strip tB, date = moment, matchId})
     <$> parseVlrTime (toString d)
 
-scrapeMatch :: VlrMatchId -> IO (Maybe VlrMatch)
-scrapeMatch matchId = do
-  case mkScrapeUrl (EntryMatchId matchId) of
-    Nothing -> pure Nothing
-    Just uri -> scrapeURL (URI.renderStr uri) match
+scrapeMatch :: (io :> es, ex :> es) => IOE io -> Exception AppError ex -> VlrMatchId -> Eff es (Maybe VlrMatch)
+scrapeMatch io ex matchId = do
+  uri <- case mkScrapeUrl (EntryMatchId matchId) of
+    Just a -> pure a
+    Nothing -> throw ex InvalidVlrUrl
+
+  scrapedEx <- effIO io $ tryAny $ scrapeURL (URI.renderStr uri) match
+  either (throw ex . Unexpected) pure scrapedEx
   where
     match :: Scraper Text VlrMatch
     match = do
