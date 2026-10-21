@@ -1,0 +1,61 @@
+Team\%20Heretics
+[{"id":127319,"name":"Team Heretics","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_team heretics_128622.png","abbreviation":"th1","createdAt":"2025-10-14T15:15:39.965663Z","updatedAt":"2026-08-14T15:49:06.138403Z","providerId":128622,"color":"#414141"}]
+Rex\%20Regum\%20Qeon
+[{"id":126413,"name":"Rex Regum Qeon","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_rex regum qeon_130638.png","abbreviation":"rrq1","createdAt":"2025-10-14T15:15:30.217578Z","updatedAt":"2025-11-05T00:20:02.997856Z","providerId":130638,"color":"#E0A020"}]
+Xi\%20Lai\%20Gaming
+[{"id":126513,"name":"LOUD","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_loud_130338.png","abbreviation":"loud","createdAt":"2025-10-14T15:15:30.262841Z","updatedAt":"2025-11-05T00:20:03.720306Z","providerId":130338,"color":"#00E000"}]
+BBL\%20Esports
+[{"id":127384,"name":"BBL Esports","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_bbl esports_128577.png","abbreviation":"bbl1","createdAt":"2025-10-14T15:15:40.438447Z","updatedAt":"2026-07-02T18:11:44.736691Z","providerId":128577,"color":"#410082"}]
+FULL\%20SENSE
+[{"id":127172,"name":"FULL SENSE","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_full sense_128912.png","abbreviation":"fs1","createdAt":"2025-10-14T15:15:39.563071Z","updatedAt":"2025-11-05T00:20:05.789058Z","providerId":128912,"color":"#E06000"}]
+Weibo\%20Gaming
+[]
+G2\%20Esports
+[{"id":127415,"name":"G2 Esports","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_g2 esports_128538.png","abbreviation":"g21","createdAt":"2025-10-14T15:15:41.139498Z","updatedAt":"2025-11-05T00:20:07.44208Z","providerId":128538,"color":"#E04020"}]
+Fnatic
+[{"id":127418,"name":"Fnatic","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_fnatic_128537.png","abbreviation":"fnc1","createdAt":"2025-10-14T15:15:41.226123Z","updatedAt":"2025-11-05T00:20:07.440957Z","providerId":128537,"color":"#E04000"}]
+T1
+[{"id":127298,"name":"T1","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_t1_128647.png","abbreviation":"t1","createdAt":"2025-10-14T15:15:39.881702Z","updatedAt":"2025-11-05T00:20:06.677162Z","providerId":128647,"color":"#E00020"}]
+EDward\%20Gaming
+[{"id":127041,"name":"EDward Gaming","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_edward gaming_128976.png","abbreviation":"edg1","createdAt":"2025-10-14T15:15:36.800402Z","updatedAt":"2026-07-02T18:13:04.227764Z","providerId":128976,"color":"#494b4c"}]
+NRG
+[{"id":127495,"name":"NRG","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_nrg_128471.png","abbreviation":"nrg","createdAt":"2025-10-14T15:15:41.701174Z","updatedAt":"2026-10-11T05:59:08.071672Z","providerId":128471,"color":"#414141"}]
+Team\%20Vitality
+[{"id":127223,"name":"Team Vitality","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_team vitality_128796.png","abbreviation":"vit","createdAt":"2025-10-14T15:15:39.863734Z","updatedAt":"2025-11-05T00:20:06.676782Z","providerId":128796,"color":"#E0E000"}]
+Paper\%20Rex
+[{"id":127161,"name":"Paper Rex","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_paper rex_128917.png","abbreviation":"pr1","createdAt":"2025-10-14T15:15:39.204355Z","updatedAt":"2026-10-09T09:39:05.730121Z","providerId":128917,"color":"#414141"}]
+TYLOO
+[{"id":125835,"name":"TYLOO","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_tyloo_133288.png","abbreviation":"tyloo","createdAt":"2025-10-14T15:15:29.907997Z","updatedAt":"2025-11-05T00:20:00.946602Z","providerId":133288,"color":"#C02020"}]
+Sentinels
+[{"id":127492,"name":"Sentinels","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_sentinels_128472.png","abbreviation":"sen","createdAt":"2025-10-14T15:15:41.700522Z","updatedAt":"2025-11-05T00:20:07.454453Z","providerId":128472,"color":"#C00020"}]
+Team\%20Liquid
+[{"id":127406,"name":"Team Liquid","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_team liquid_128541.png","abbreviation":"tl1","createdAt":"2025-10-14T15:15:40.722067Z","updatedAt":"2026-07-02T18:11:44.92905Z","providerId":128541,"color":"#000082"}]
+Crazy\%20Raccoon
+[{"id":126936,"name":"Crazy Raccoon","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_crazy raccoon_129017.png","abbreviation":"cr","createdAt":"2025-10-14T15:15:34.789815Z","updatedAt":"2025-11-05T00:20:05.783586Z","providerId":129017,"color":"#E00000"}]
+All\%20Gamers
+[{"id":127047,"name":"All Gamers","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_all gamers_128974.png","abbreviation":"ag1","createdAt":"2025-10-14T15:15:36.802018Z","updatedAt":"2025-11-05T00:20:05.783276Z","providerId":128974,"color":"#C02000"}]
+KRÜ\%20Esports
+[{"id":127155,"name":"KRÜ Esports","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_krü esports_128944.png","abbreviation":"kru1","createdAt":"2025-10-14T15:15:39.036322Z","updatedAt":"2025-11-05T00:20:05.785219Z","providerId":128944,"color":"#E00080"}]
+Gentle\%20Mates
+[{"id":125863,"name":"Gentle Mates","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_gentle mates_133115.png","abbreviation":"gm","createdAt":"2025-10-14T15:15:29.922426Z","updatedAt":"2026-08-12T16:39:06.364415Z","providerId":133115,"color":"#414141"}]
+ZETA\%20Division
+[]
+Trace\%20Esports
+[{"id":125823,"name":"Trace Esports","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_trace esports_133380.png","abbreviation":"te","createdAt":"2025-10-14T15:15:29.901601Z","updatedAt":"2025-11-05T00:20:00.943171Z","providerId":133380,"color":"#204060"}]
+LEVIATÁN
+[]
+Karmine\%20Corp
+[{"id":126341,"name":"Karmine Corp","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_karmine corp_130922.png","abbreviation":"kc3","createdAt":"2025-10-14T15:15:30.179872Z","updatedAt":"2026-10-03T09:49:08.1972Z","providerId":130922,"color":"#414141"}]
+GEN.G
+Bilibili\%20Gaming
+[{"id":125824,"name":"Bilibili Gaming","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_bilibili gaming_133379.png","abbreviation":"blg","createdAt":"2025-10-14T15:15:29.902143Z","updatedAt":"2025-11-05T00:20:00.946104Z","providerId":133379,"color":"#20C0E0"}]
+MIBR
+[{"id":126556,"name":"MIBR","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_mibr_130190.png","abbreviation":"mibr","createdAt":"2025-10-14T15:15:30.282823Z","updatedAt":"2026-07-02T18:11:43.902835Z","providerId":130190,"color":"#000082"}]
+FUT\%20Esports
+[{"id":127381,"name":"FUT Esports","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_fut esports_128578.png","abbreviation":"fut1","createdAt":"2025-10-14T15:15:40.437596Z","updatedAt":"2026-07-02T18:11:44.927755Z","providerId":128578,"color":"#000082"}]
+GAM\%20Esports
+[]
+JD\%20Gaming
+[{"id":125647,"name":"JD Gaming","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_jd gaming_134454.png","abbreviation":"jdg","createdAt":"2025-10-14T15:15:29.80648Z","updatedAt":"2025-11-05T00:20:00.297783Z","providerId":134454,"color":"#C00020"}]
+100\%20Thieves
+[{"id":127333,"name":"100 Thieves","league":"valorant","record":"0-0","logo":"https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/valorant/valorant_100 thieves_128605.png","abbreviation":"100t1","createdAt":"2025-10-14T15:15:40.109753Z","updatedAt":"2025-11-05T00:20:06.685312Z","providerId":128605,"color":"#E02020"}]
