@@ -23,6 +23,7 @@ executable pc-backtest-ingest
             Vlr
             Polymarket
             Domain.Types
+            Domain.Teams
     -- other-extensions:
     build-depends:
             base >= 4.14 && < 4.21,
@@ -39,12 +40,13 @@ executable pc-backtest-ingest
             aeson ^>=2.2.3.0,
             bluefin ^>=0.0.4.3,
             safe-exceptions ^>=0.1.7.4,
-            fast-logger ^>=3.2.8
+            fast-logger ^>=3.2.8,
+            bimap ^>=0.5.0
     hs-source-dirs:   app
     mixins:
             base hiding (Prelude),
             relude (Relude as Prelude),
             relude
     default-language: GHC2024
-    default-extensions: OverloadedStrings QuasiQuotes DeriveGeneric DuplicateRecordFields NoImplicitPrelude
+    default-extensions: OverloadedStrings QuasiQuotes DeriveGeneric DuplicateRecordFields NoImplicitPrelude DerivingVia
 

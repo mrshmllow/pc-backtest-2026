@@ -77,14 +77,14 @@ scrapeMatch io ex matchId = do
     titleTeams :: Scraper Text [Text]
     titleTeams = texts $ "div" @: [hasClass "wf-title-med"]
 
-matchUrlToId :: [Text] -> Either SomeException [Int]
+matchUrlToId :: [Text] -> Either SomeException [VlrMatchId]
 matchUrlToId ts = do
   uris <- mapM URI.mkURI ts
   let pathPieces = uris ^.. traversed . uriPath . _head . unRText :: [Text]
 
-  traverse parseInt pathPieces
+  traverse parseMatchId pathPieces
   where
-    parseInt t = maybe (Left (toException (userError ("not an int: " <> show t)))) Right (readMaybe $ toString t)
+    parseMatchId t = maybe (Left (toException (userError ("not an int: " <> show t)))) Right (VlrMatchId <$> (readMaybe $ toString t))
 
 scrapeEvent :: (io :> es, ex :> es) => IOE io -> Exception AppError ex -> VlrEventId -> Eff es (Maybe VlrEvent)
 scrapeEvent io ex eventId = do

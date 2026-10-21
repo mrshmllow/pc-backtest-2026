@@ -1,12 +1,20 @@
-module Domain.Types (PolymarketData, PolymarketTeam, AppError (..), VlrMatch (..), VlrMatchId (..), VlrEntry (..), VlrEventId (..), VlrEvent (..)) where
+module Domain.Types (PolymarketTeamId (..), VlrTeamId (..), PolymarketData, PolymarketTeam, AppError (..), VlrMatch (..), VlrMatchId (..), VlrEntry (..), VlrEventId (..), VlrEvent (..)) where
 
 import Data.Aeson (FromJSON)
 import Data.Time (UTCTime)
 import Network.HTTP.Simple (HttpException, JSONException)
 import Relude
 
+newtype PolymarketTeamId = PolymarketTeamId Int
+  deriving (FromJSON) via Int
+  deriving (Show, Eq, Ord)
+
+newtype VlrTeamId = VlrTeamId Int
+  deriving (FromJSON) via Int
+  deriving (Show, Eq, Ord)
+
 data PolymarketTeam = PolymarketTeam
-  { id :: Int,
+  { id :: PolymarketTeamId,
     name :: Text,
     abbreviation :: Text
   }
@@ -22,7 +30,13 @@ data PolymarketData = PolymarketData
 
 instance FromJSON PolymarketData
 
-data AppError = InvalidSlug | InvalidVlrUrl | JsonException JSONException | Http HttpException | Unexpected SomeException deriving (Show)
+data AppError
+  = InvalidSlug
+  | InvalidVlrUrl
+  | JsonException JSONException
+  | Http HttpException
+  | Unexpected SomeException
+  deriving (Show)
 
 data VlrMatch
   = MatchData
@@ -36,7 +50,7 @@ data VlrMatch
 data VlrEvent
   = EventData
   { name :: Text,
-    matches :: [Int]
+    matches :: [VlrMatchId]
   }
   deriving (Show)
 

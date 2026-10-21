@@ -5,7 +5,7 @@ import Bluefin.Exception (Exception, throw)
 import Bluefin.IO (IOE, effIO)
 import Control.Exception.Safe (tryAny)
 import Control.Lens
-import Domain.Types (AppError (..), PolymarketData)
+import Domain.Types (AppError (..), PolymarketData, VlrMatch)
 import Network.HTTP.Simple
   ( getResponseBody,
     httpJSONEither,
@@ -39,3 +39,6 @@ eventBySlug io ex slug = do
   either (throw ex . JsonException) pure (getResponseBody json)
   where
     classifyReq e = maybe (Unexpected e) Http (fromException e)
+
+vlrMatchToPolymarketSlug :: VlrMatch -> Text
+vlrMatchToPolymarketSlug = undefined
