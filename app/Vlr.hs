@@ -20,7 +20,6 @@ import Text.HTML.Scalpel
     hasClass,
     scrapeURL,
     text,
-    texts,
     (//),
     (@:),
   )

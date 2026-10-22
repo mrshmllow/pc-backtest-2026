@@ -33,10 +33,14 @@ instance FromJSON PolymarketData
 data AppError
   = InvalidSlug
   | InvalidVlrUrl
+  | NothingFound
+  | TeamNotAdded
   | JsonException JSONException
   | Http HttpException
   | Unexpected SomeException
-  deriving (Show)
+  deriving (Show, Typeable)
+
+instance Exception AppError
 
 data VlrMatch
   = MatchData
