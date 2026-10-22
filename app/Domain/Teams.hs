@@ -14,7 +14,7 @@ vlrPolymarketIds =
       -- Rex Regum Qeon
       (VlrTeamId 878, PolymarketTeamId 126413),
       -- LOUD
-      (VlrTeamId 13581, PolymarketTeamId 126513),
+      (VlrTeamId 6961, PolymarketTeamId 126513),
       -- BBL Esports
       (VlrTeamId 397, PolymarketTeamId 127384),
       -- FULL SENSE
