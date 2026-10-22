@@ -1,10 +1,17 @@
-module Polymarket (PolymarketData, gammaBaseUrl, eventBySlugUrl, eventBySlug) where
+module Polymarket where
 
 import Bluefin.Eff (Eff, (:>))
 import Bluefin.Exception (Exception, throw)
 import Bluefin.IO (IOE, effIO)
 import Control.Exception.Safe (tryAny)
 import Control.Lens
+import Data.Bimap qualified
+import Data.Generics.Product (HasField (field))
+import Data.Map.Lazy qualified as Map
+import Data.Text qualified as T
+import Data.Time (UTCTime (utctDay))
+import Data.Time.Calendar (showGregorian)
+import Domain.Teams (polymarketTeamAbbrv, vlrPolymarketIds)
 import Domain.Types (AppError (..), PolymarketData, VlrMatch)
 import Network.HTTP.Simple
   ( getResponseBody,
@@ -40,5 +47,17 @@ eventBySlug io ex slug = do
   where
     classifyReq e = maybe (Unexpected e) Http (fromException e)
 
-vlrMatchToPolymarketSlug :: VlrMatch -> Text
-vlrMatchToPolymarketSlug = undefined
+vlrMatchToPolymarketSlug :: VlrMatch -> Maybe Text
+vlrMatchToPolymarketSlug match = do
+  let aVlr = match ^. field @"teamA"
+  let bVlr = match ^. field @"teamB"
+
+  aPoly <- Data.Bimap.lookup aVlr vlrPolymarketIds
+  bPoly <- Data.Bimap.lookup bVlr vlrPolymarketIds
+
+  aAbbrv <- Map.lookup aPoly polymarketTeamAbbrv
+  bAbbrv <- Map.lookup bPoly polymarketTeamAbbrv
+
+  let date = showGregorian (utctDay $ match ^. field @"date")
+
+  pure $ "val-" <> aAbbrv <> "-" <> bAbbrv <> "-" <> T.pack date

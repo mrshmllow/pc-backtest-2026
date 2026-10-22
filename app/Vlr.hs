@@ -1,9 +1,4 @@
-module Vlr
-  ( scrapeMatch,
-    mkScrapeUrl,
-    scrapeEvent,
-  )
-where
+module Vlr where
 
 import Bluefin.Eff (Eff, (:>))
 import Bluefin.Exception (Exception, throw)
@@ -20,6 +15,7 @@ import Text.HTML.Scalpel
   ( Scraper,
     Selector,
     attr,
+    attrs,
     chroots,
     hasClass,
     scrapeURL,
@@ -48,9 +44,9 @@ mkScrapeUrl (EntryEventId (VlrEventId eventId)) = do
 parseVlrTime :: [Char] -> Maybe UTCTime
 parseVlrTime = parseTimeM True defaultTimeLocale "%Y-%m-%d %H:%M:%S"
 
-vlrMatch :: VlrMatchId -> Text -> Text -> Text -> Maybe VlrMatch
+vlrMatch :: VlrMatchId -> VlrTeamId -> VlrTeamId -> Text -> Maybe VlrMatch
 vlrMatch matchId tA tB d =
-  (\moment -> MatchData {teamA = T.strip tA, teamB = T.strip tB, date = moment, matchId})
+  (\moment -> MatchData {teamA = tA, teamB = tB, date = moment, matchId})
     <$> parseVlrTime (toString d)
 
 scrapeMatch :: (io :> es, ex :> es) => IOE io -> Exception AppError ex -> VlrMatchId -> Eff es (Maybe VlrMatch)
@@ -60,13 +56,23 @@ scrapeMatch io ex matchId = do
     Nothing -> throw ex InvalidVlrUrl
 
   scrapedEx <- effIO io $ tryAny $ scrapeURL (URI.renderStr uri) match
-  either (throw ex . Unexpected) pure scrapedEx
+  scrapedMaybe <- case scrapedEx of
+    Left exception -> throw ex (Unexpected exception)
+    Right mayb -> pure $ mayb
+
+  (tALink, tBLink, timestamp) <- maybe (throw ex InvalidVlrUrl) pure scrapedMaybe
+  ta <- maybe (throw ex InvalidVlrUrl) pure (teamUrlToId tALink)
+  tb <- maybe (throw ex InvalidVlrUrl) pure (teamUrlToId tBLink)
+
+  pure $ vlrMatch matchId ta tb timestamp
   where
-    match :: Scraper Text VlrMatch
+    match :: Scraper Text (Text, Text, Text)
     match = do
-      (tA : tB : _) <- titleTeams
+      -- (tA : tB : _) <- titleTeams
+      (tALink : tBLink : _) <- teamLinks
       timestamp <- momentUtc
-      maybe empty pure (vlrMatch matchId tA tB timestamp)
+
+      pure $ (tALink, tBLink, timestamp)
 
     momentUtc :: Scraper Text Text
     momentUtc = attr "data-utc-ts" momentSelector
@@ -74,8 +80,18 @@ scrapeMatch io ex matchId = do
     momentSelector :: Selector
     momentSelector = "div" @: [hasClass "match-header-date"] // "div" @: [hasClass "moment-tz-convert"]
 
-    titleTeams :: Scraper Text [Text]
-    titleTeams = texts $ "div" @: [hasClass "wf-title-med"]
+    -- titleTeams :: Scraper Text [Text]
+    -- titleTeams = texts $ "div" @: [hasClass "wf-title-med"]
+
+    teamLinks :: Scraper Text [Text]
+    teamLinks = attrs "href" $ "a" @: [hasClass "match-header-link"]
+
+teamUrlToId :: Text -> Maybe VlrTeamId
+teamUrlToId ts = do
+  uris <- URI.mkURI ts
+  let pathPiece = uris ^. uriPath . ix 1 . unRText
+
+  VlrTeamId <$> (readMaybe $ toString pathPiece)
 
 matchUrlToId :: [Text] -> Either SomeException [VlrMatchId]
 matchUrlToId ts = do

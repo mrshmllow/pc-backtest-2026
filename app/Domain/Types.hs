@@ -40,12 +40,12 @@ data AppError
 
 data VlrMatch
   = MatchData
-  { teamA :: Text,
-    teamB :: Text,
+  { teamA :: VlrTeamId,
+    teamB :: VlrTeamId,
     date :: UTCTime,
     matchId :: VlrMatchId
   }
-  deriving (Show)
+  deriving (Show, Generic)
 
 data VlrEvent
   = EventData

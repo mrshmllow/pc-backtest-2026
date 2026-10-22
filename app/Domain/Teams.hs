@@ -1,11 +1,14 @@
 module Domain.Teams where
 
 import Data.Bimap
+import Data.Text (Text)
 import Domain.Types (PolymarketTeamId (PolymarketTeamId), VlrTeamId (VlrTeamId))
+import Relude qualified as Relude
+import Relude.Container (Map)
 
 vlrPolymarketIds :: Bimap VlrTeamId PolymarketTeamId
 vlrPolymarketIds =
-  fromList
+  Data.Bimap.fromList
     [ -- Team Heretics
       (VlrTeamId 1001, PolymarketTeamId 127319),
       -- Rex Regum Qeon
@@ -58,4 +61,61 @@ vlrPolymarketIds =
       (VlrTeamId 13576, PolymarketTeamId 125647),
       -- 100 Thieves
       (VlrTeamId 120, PolymarketTeamId 127333)
+    ]
+
+polymarketTeamAbbrv :: Map PolymarketTeamId Text
+polymarketTeamAbbrv =
+  Relude.fromList
+    [ -- Team Heretics
+      (PolymarketTeamId 127319, "th1"),
+      -- Rex Regum Qeon
+      (PolymarketTeamId 126413, "rrq1"),
+      -- LOUD
+      (PolymarketTeamId 126513, "loud"),
+      -- BBL Esports
+      (PolymarketTeamId 127384, "bbl1"),
+      -- FULL SENSE
+      (PolymarketTeamId 127172, "fs1"),
+      -- G2 Esports
+      (PolymarketTeamId 127415, "g21"),
+      -- Fnatic
+      (PolymarketTeamId 127418, "fnc1"),
+      -- T1
+      (PolymarketTeamId 127298, "t1"),
+      -- EDward Gaming
+      (PolymarketTeamId 127041, "edg1"),
+      -- NRG
+      (PolymarketTeamId 127495, "nrg"),
+      -- Team Vitality
+      (PolymarketTeamId 127223, "vit"),
+      -- Paper Rex
+      (PolymarketTeamId 127161, "pr1"),
+      -- TYLOO
+      (PolymarketTeamId 125835, "tyloo"),
+      -- Sentinels
+      (PolymarketTeamId 127492, "sen"),
+      -- Team Liquid
+      (PolymarketTeamId 127406, "tl1"),
+      -- Crazy Raccoon
+      (PolymarketTeamId 126936, "cr"),
+      -- All Gamers
+      (PolymarketTeamId 127047, "ag1"),
+      -- KRÜ Esports
+      (PolymarketTeamId 127155, "kru1"),
+      -- Gentle Mates
+      (PolymarketTeamId 125863, "gm"),
+      -- Trace Esports
+      (PolymarketTeamId 125823, "te"),
+      -- Karmine Corp
+      (PolymarketTeamId 126341, "kc3"),
+      -- Bilibili Gaming
+      (PolymarketTeamId 125824, "blg"),
+      -- MIBR
+      (PolymarketTeamId 126556, "mibr"),
+      -- FUT Esports
+      (PolymarketTeamId 127381, "fut1"),
+      -- JD Gaming
+      (PolymarketTeamId 125647, "jdg"),
+      -- 100 Thieves
+      (PolymarketTeamId 127333, "100t1")
     ]

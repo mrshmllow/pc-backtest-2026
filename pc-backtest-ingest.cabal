@@ -41,12 +41,12 @@ executable pc-backtest-ingest
             bluefin ^>=0.0.4.3,
             safe-exceptions ^>=0.1.7.4,
             fast-logger ^>=3.2.8,
-            bimap ^>=0.5.0
+            bimap ^>=0.5.0,
+            generic-lens ^>=2.3.0.0
     hs-source-dirs:   app
     mixins:
             base hiding (Prelude),
             relude (Relude as Prelude),
             relude
     default-language: GHC2024
-    default-extensions: OverloadedStrings QuasiQuotes DeriveGeneric DuplicateRecordFields NoImplicitPrelude DerivingVia
-
+    default-extensions: OverloadedStrings QuasiQuotes DeriveGeneric DuplicateRecordFields NoImplicitPrelude DerivingVia TypeApplications
